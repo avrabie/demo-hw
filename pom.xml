@@ -24,6 +24,8 @@
         <module>guess-what</module>
         <module>logger-demo</module>
       <module>my-httpClient-hw</module>
+      <module>my-testing-mocking</module>
+      <module>completable-future-demo</module>
     </modules>
 
 

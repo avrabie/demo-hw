@@ -20,18 +20,19 @@ public class MyAppRef1 {
     public static void main(String[] args) throws IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
 
-        HttpUriRequest get = RequestBuilder.create("GET")
+        HttpUriRequest getRequest = RequestBuilder.create("GET")
                                            .setUri("https://jsonplaceholder.typicode.com/posts")
                                            .addHeader("Content-Type","application/json")
                                            .build();
 
 //        HttpGet httpRequest = new HttpGet("https://jsonplaceholder.typicode.com/posts");
 
-        CloseableHttpResponse response = httpclient.execute(get);
+        CloseableHttpResponse response = httpclient.execute(getRequest);
         HttpEntity entity = response.getEntity();
 
         //one way ... but better use EntityUtils :)
         String responseString = EntityUtils.toString(entity);
+        System.out.println(responseString);
 
 //        System.out.println(sb.toString());
 
@@ -40,7 +41,8 @@ public class MyAppRef1 {
         Type listType = new TypeToken<List<SomePost>>() {
         }.getType();
         List<SomePost> posts = gson.fromJson(responseString, listType);
-        posts.stream().forEach(System.out::println);
+//        posts.stream().forEach(System.out::println);
+
     }
 
 }
